@@ -11,7 +11,8 @@ const array = [
   { lastname: "Sophie" },
 ];
 
-const sortTypes = (array) => {
+// The first way of a solution
+const sortTypes1 = (array) => {
   const obj = {};
 
   for (let item of array) {
@@ -24,4 +25,19 @@ const sortTypes = (array) => {
   return obj;
 };
 
-console.log(sortTypes(array));
+// The second way of the solution
+
+const sortTypes2 = (array) => {
+  const result = array.reduce((init, curr) => {
+    if (init[typeof curr]) {
+      init[typeof curr].push(curr);
+    } else {
+      init[typeof curr] = [curr];
+    }
+    return init;
+  }, {});
+
+  return result;
+};
+
+console.log(sortTypes2(array));
